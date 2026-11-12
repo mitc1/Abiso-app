@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fil">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ABISO – Barangay Cambalo</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<script>
+/* ilapat agad ang theme para walang flash */
+try { var p = JSON.parse(localStorage.getItem('abiso_prefs') || '{}');
+  document.documentElement.dataset.theme = p.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (e) {}
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section id="login">
+  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  <div class="lang"><button type="button" class="pill themebtn" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Dark / Light mode"></button><button type="button" class="pill" onclick="setLang('tl')">Tagalog</button><button type="button" class="pill" onclick="setLang('en')">English</button></div>
+  <div class="lwrap">
+    <div class="hero">
+      <img class="login-logo" src="logo.png" alt="Seal of Barangay Cambalo">
+      <div class="logo">ABISO<small>Barangay Cambalo</small></div>
+      <p> Barangay Notification System using AI-Based Announcement Classification and Household Profiling</p>
+      <p><em>“Timely Updates,<br>Safer Community.”</em></p>
+    </div>
+    <form class="lcard" onsubmit="return doLogin(event)" novalidate>
+      <h2>Admin Login</h2>
+      <p class="sub">Access the ABISO Admin Panel</p>
+      <input id="u" placeholder="Username" autocomplete="username">
+      <input id="p" type="password" placeholder="Password" autocomplete="current-password">
+      <div class="err" id="lerr"></div>
+      <button class="btn full">Log In</button>
+      <p class="sub" style="margin-top:14px;font-size:12px"></p>
+    </form>
+  </div>
+</section>
+<div id="app" class="hide">
+  <aside id="nav"></aside>
+  <div>
+    <header><div class="who"><div class="av">A</div><div><b id="dn">Admin</b><br><small style="color:var(--mut)">Administrator</small></div></div><button class="btn ghost sm themebtn" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Dark / Light mode"></button><button class="btn ghost sm" onclick="confirmLogout()">Log out</button></header>
+    <main id="view"></main>
+  </div>
+</div>
+<div id="toast" class="hide" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
